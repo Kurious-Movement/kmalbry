@@ -14,4 +14,108 @@
       --max:1100px;
     }
     *{box-sizing:border-box}
-    html,body{margin:0;background:var(--bg);color:v
+    html,body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;line-height:1.5}
+    a{color:#fff;text-decoration:none;font-weight:700}
+    a:visited{color:#fff;font-weight:400} /* stays white, becomes not-bold after clicked */
+    header,footer{
+      position:sticky;top:0;z-index:20;
+      background:linear-gradient(90deg, rgba(229,57,53,.85), rgba(110,110,110,.85), rgba(30,167,165,.85));
+      -webkit-backdrop-filter:saturate(120%) blur(6px);
+      backdrop-filter:saturate(120%) blur(6px);
+    }
+    footer{position:static;margin-top:4rem}
+    .inner{max-width:var(--max);margin:0 auto;padding:12px 20px;display:flex;align-items:center;gap:18px;justify-content:space-between}
+    nav{display:flex;gap:18px;flex-wrap:wrap}
+    .btn{padding:.55rem .9rem;border-radius:999px;border:1px solid rgba(255,255,255,.25)}
+    .hero{
+      position:relative;min-height:70vh;display:grid;place-items:center;text-align:center;overflow:hidden
+    }
+    .hero::before{
+      content:"";position:absolute;inset:0;
+      background:
+        linear-gradient(to bottom, rgba(0,0,0,.55), rgba(0,0,0,.65)),
+        url('assets/hero.jpg') center/cover no-repeat;
+      filter:saturate(110%);
+      z-index:-2;
+    }
+    .hero h1{font-size:clamp(2rem,4vw,3rem);margin:0 16px}
+    .hero p{max-width:720px;margin:12px auto 0;opacity:.95}
+    .section{max-width:var(--max);margin:3rem auto;padding:0 20px}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:18px}
+    .card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);padding:18px;border-radius:16px}
+    .muted{opacity:.88}
+    /* Curving arrow starting off-screen and coming down the page */
+    .arrow-wrap{position:absolute;left:-120px;top:-80px;width:120%;height:140%;pointer-events:none;z-index:-1}
+    svg{display:block}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="inner">
+      <strong>Kurious Movement</strong>
+      <nav>
+        <a href="./index.html" class="btn">Home</a>
+        <a href="./learn-more.html" class="btn">Learn&nbsp;More</a>
+        <a href="./group-training.html" class="btn">Group&nbsp;Training</a>
+        <a href="./our-purpose.html" class="btn">Our&nbsp;Purpose</a>
+        <a href="./chase-tag.html" class="btn">Chase&nbsp;Tag</a>
+        <a href="./contact.html" class="btn">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <!-- Big down-curving arrow (thicker, opaque) -->
+      <div class="arrow-wrap" aria-hidden="true">
+        <svg viewBox="0 0 1200 1600" preserveAspectRatio="none">
+          <path d="M-100,50 C 300,300 600,200 800,450
+                   S 1150,900 900,1100
+                   S 500,1350 650,1500"
+                fill="none" stroke="white" stroke-width="10" stroke-linecap="round" />
+          <!-- Arrow head -->
+          <path d="M640,1460 L650,1500 L690,1490" fill="none" stroke="white" stroke-width="10" stroke-linecap="round"/>
+        </svg>
+      </div>
+
+      <div>
+        <h1>Movement • Community • Growth</h1>
+        <p class="muted">
+          Parkour and group training in Albury–Wodonga. Inclusive coaching, strong community,
+          and a space to explore what your body can do.
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>What are you looking for?</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>Parkour Classes</h3>
+          <p class="mutted">Ages 8+ with progressions for every level.</p>
+          <p><a class="btn" href="./learn-more.html#parkour">Learn more</a></p>
+        </div>
+        <div class="card">
+          <h3>Group Training</h3>
+          <p class="muted">Strength, conditioning, and confidence—no ego.</p>
+          <p><a class="btn" href="./group-training.html">See sessions</a></p>
+        </div>
+        <div class="card">
+          <h3>Our Purpose</h3>
+          <p class="muted">Why we exist and how we serve our community.</p>
+          <p><a class="btn" href="./our-purpose.html">Read more</a></p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="inner">
+      <small>© <span id="y"></span> Kurious Movement</small>
+      <small><a href="./contact.html">Contact</a></small>
+    </div>
+  </footer>
+
+  <script>document.getElementById('y').textContent=new Date().getFullYear();</script>
+</body>
+</html>
